@@ -19,6 +19,9 @@ class GFG {
 // } Driver Code Ends
 
 
+//********REMEMBER THIS***************
+//String[] array = S.split("\\."); beacause . is a special character
+//String result = String.join(".", array);
 
 class Solution 
 {
