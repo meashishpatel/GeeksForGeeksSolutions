@@ -83,3 +83,21 @@ class Solution
         return head;
     }
 }
+
+//______________________________________ITERATIVE APPROACH_________________________________________________
+// class Solution
+// {
+//     //Function to reverse a linked list.
+//     Node reverseList(Node head)
+//     {
+//         // Iterative approach
+//         if(head==null || head.next == null){
+//             return head;
+//         }
+//         Node secondNode = head.next;
+//         head.next = null;
+//         Node reversedNode = reverseList(secondNode);
+//         secondNode.next = head;
+//         return reversedNode;
+//     }
+// }
