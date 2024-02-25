@@ -30,27 +30,32 @@ class GFG
 
 class Solution
 {
-    public List<String> AllPossibleStrings(String s)
+    
+    public List<String> AllPossibleStrings(String str)
     {
-        // Code here
-        int length = s.length();
-        List<String> ans = new ArrayList<>();
-        for(int i = 1; i < (1 << length); i++){
-            int x = i;
-            int j = 0;
-            StringBuilder currentString = new StringBuilder();
-
-            while (x > 0) {
-                if ((x & 1) > 0) {
-                    currentString.append(s.charAt(j));
-                }
-                j++;
-                x = x >> 1;
-            }
-            ans.add(currentString.toString());
-        }
-
-        Collections.sort(ans);
-        return ans;
+        List<String> res = AllPossibleStringsHelper(str);
+        res.remove("");
+        res.sort((s1,s2)->s1.compareTo(s2));
+        return res;
+    }
+    public List<String> AllPossibleStringsHelper(String str)
+    {
+        if(str.length()==0)
+		{
+			List<String> subset = new ArrayList<>();
+			subset.add("");
+			return subset;
+		}
+		List<String> subset = AllPossibleStringsHelper(str.substring(1));
+		
+		List<String> newSubsets = new ArrayList<String>();
+		
+		for(int i=0;i<subset.size();i++)
+		{
+			newSubsets.add(subset.get(i));
+			newSubsets.add(str.charAt(0)+subset.get(i));
+		}
+		
+		return newSubsets;
     }
 }
